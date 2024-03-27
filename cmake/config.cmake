@@ -203,6 +203,8 @@ set(USE_MKL OFF)
 # - OFF: Disable DNNL
 set(USE_DNNL OFF)
 
+set(USE_IMP OFF)
+
 # Whether use Intel AMX instructions.
 set(USE_AMX OFF)
 
