@@ -20,7 +20,7 @@ import tvm.ir
 
 # def _register_external_op_helper(op_name, supported=True):
 #     """The helper function to indicate that a given operator can be supported
-#     by IMP.
+#     by DNNL.
 
 #     Paramters
 #     ---------

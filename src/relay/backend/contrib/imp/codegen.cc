@@ -235,7 +235,7 @@ class CodegenIMP : public MemoizedExprTranslator<std::vector<Output>>, public Co
       output.size = out_size;
       output.dtype = GetDtypeString(out_type.as<TensorTypeNode>());
       output.need_copy = true;
-      ret.buffers.push_back("uint32_t* " + out + " = (uint32_t*)std::malloc(4 * " +
+      ret.buffers.push_back("int * " + out + " = (int *)std::malloc(4 * " +
                             std::to_string(out_size) + ");");
       ret.outputs.push_back(output);
     }
@@ -336,7 +336,7 @@ class IMPModuleCodegen : public CSourceModuleCodegenBase {
         // Create a CSource module with all above artifacts.
         const auto* pf = runtime::Registry::Get("runtime.CSourceModuleCreate");
         ICHECK(pf != nullptr) << "Cannot find csource module to create the external runtime module";
-        return (*pf)(code, "c", sym, variables);
+        return (*pf)(code, "c", Array<String>{sym}, variables);
     }
  private:
   /*!
