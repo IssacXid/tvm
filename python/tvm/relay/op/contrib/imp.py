@@ -13,14 +13,14 @@ it is supported. For example:
       add = _register_external_op_helper("add", False)
 
 - The other way is to implement the function by themselves to
-check the attributes of the op and decide if it should be offloaded to DNNL.
+check the attributes of the op and decide if it should be offloaded to IMP.
 """
 import tvm.ir
 
 
 # def _register_external_op_helper(op_name, supported=True):
 #     """The helper function to indicate that a given operator can be supported
-#     by DNNL.
+#     by IMP.
 
 #     Paramters
 #     ---------
@@ -30,7 +30,7 @@ import tvm.ir
 #     Returns
 #     -------
 #     f : callable
-#         A function that returns if the operator is supported by DNNL.
+#         A function that returns if the operator is supported by IMP.
 #     """
 #     @tvm.ir.register_op_attr(op_name, "target.imp")
 #     def _func_wrapper(attrs, args):
@@ -49,9 +49,9 @@ import tvm.ir
 
 
 @tvm.ir.register_op_attr("add", "target.imp")
-def _imp_add_wrapper(attrs, args):
+def _imp_add_wrapper(expr):
   return True
 
 @tvm.ir.register_op_attr("multiply", "target.imp")
-def _imp_multiply_wrapper(attrs, args):
+def _imp_multiply_wrapper(expr):
   return True
