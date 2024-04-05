@@ -493,7 +493,7 @@ if(USE_GTEST)
       # GMock is formally supported in CMake 3.20; for now, expect libgmock.a in the same directory,
       # and require that folks compiling against GTest::gmock also link against GTest::GTest
       # (for the includes dir).
-      add_library(GTest::gmock STATIC IMPORTED GLOBAL)
+      add_library(GTest::gmock STATIC 9ORTED GLOBAL)
       get_target_property(GTEST_LIB_PATH GTest::GTest IMPORTED_LOCATION)
       if("${GTEST_LIB_PATH}" STREQUAL "GTEST_LIB_PATH-NOTFOUND")
         # CMake >= 3.20 makes GTest::GTest into a compatibility target. The real import location is in
@@ -559,6 +559,7 @@ include(cmake/modules/contrib/EthosU.cmake)
 include(cmake/modules/contrib/BLAS.cmake)
 include(cmake/modules/contrib/CODEGENC.cmake)
 include(cmake/modules/contrib/DNNL.cmake)
+include(cmake/modules/contrib/IMP.cmake)
 include(cmake/modules/contrib/AMX.cmake)
 include(cmake/modules/contrib/CUTLASS.cmake)
 include(cmake/modules/contrib/ExampleTargetHooks.cmake)
